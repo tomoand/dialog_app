@@ -1,0 +1,17 @@
+<h1>検索結果</h1>
+<%= form_tag("/search/result", data: { turbo: false}) do %>
+    <input type="text" name="word" value="<%= params[:word] %>">
+    <input type="submit" value="検索">
+<% end %>
+<% if params[:word] != "" %>
+    <p>"<%= params[:word] %>"で検索した結果、<%= @posts.length %>件が該当しました</p>
+    <ul>
+      <% @posts.each do |post| %>
+　      <li>
+          <%= link_to(post.title, "/posts/show/#{post.id}") %>
+        </li>
+     <% end %>
+    </ul>
+<% else %>
+    検索する文字列を入力してください
+<% end %>

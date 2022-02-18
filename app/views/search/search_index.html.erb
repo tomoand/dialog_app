@@ -1,0 +1,5 @@
+<h1>検索</h1>
+<%= form_tag("/search/result", data: { turbo: false}) do %>
+    <input type="text" name="word">
+    <input type="submit" value="検索">
+<% end %>
