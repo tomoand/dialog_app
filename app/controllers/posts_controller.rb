@@ -5,6 +5,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id:params[:id])
+    @content = @post.content
+    @content = @content.gsub(/\R/,"<br>")
   end
 
   def new

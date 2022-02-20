@@ -1,5 +1,5 @@
 <div data-controller="show">
-<ul>
+<ul data-action="show#content">
   <% @post.errors.full_messages.each do |message| %>
     <li>
       <%= message %>
@@ -10,6 +10,6 @@
 <h3><%= @post.created_at %></h3>
 <p><%= link_to("編集", "/posts/#{@post.id}/edit") %></p>
 <p data-action="click->show#confirm"><%= link_to("削除", "/posts/#{@post.id}/destroy", data: {confirm: "a", turbo_method: :post}) %></p>
-<p><%= @post.content %></p>
+<p><%= sanitize(@content, tags: %w(br)) %></p>
 <p><%= link_to("記事一覧へ", "/posts/index") %>
 </div>
