@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   def search_index
+    @posts = Post.all
   end
 
   def result

@@ -1,5 +1,11 @@
 <h1>検索</h1>
 <%= form_tag("/search/result", data: { turbo: false}) do %>
-    <input type="text" name="word">
+    <input type="text" name="word" autocomplete="off" list="post_titles">
+      <datalist id="post_titles">
+        <% @posts.each do |post| %>
+            <option value="<%= post.title %>"></option>
+            <% logger.debug(post.title) %>
+        <% end %>
+      </datalist>
     <input type="submit" value="検索">
 <% end %>
